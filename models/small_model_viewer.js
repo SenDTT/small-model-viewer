@@ -117,6 +117,20 @@ function init() {
     // Handle window resize
     window.addEventListener( 'resize', onWindowResize );
 
+    window.addEventListener( 'keydown', ( event ) => {
+        switch ( event.key ) {
+            case '1':
+                setCamera('cam1');
+                break;
+            case '2':
+                setCamera('cam2');
+                break;
+            case '3':
+                setCamera('cam3');
+                break;
+        }
+    });
+
 }
 
 function onWindowResize() {
@@ -130,8 +144,10 @@ function onWindowResize() {
 }
 
 function setupCameraButtons() {
+    let idx = 1;
     for ( const cam in cameras ) {
-        gui.add( { setCamera: () => setCamera(cam) }, 'setCamera' ).name( `Set ${cam}` );
+        gui.add( { setCamera: () => setCamera(cam) }, 'setCamera' ).name( `Set ${cam} (Press ${idx})` );
+        idx++;
     }
 }
 
