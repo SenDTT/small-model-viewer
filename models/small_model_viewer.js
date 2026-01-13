@@ -10,17 +10,17 @@ let camera, cameraTarget, scene, renderer;
 
 let gui;
 
-let cube1, cube2;
+let cube1, cube2, cube3;
 
 // camera transition helpers
 let targetPosition = new THREE.Vector4(20, 5, 1, 10);
 let targetLookAt = new THREE.Vector3(0, 1, 0);
-const lerpSpeed = 0.005;
+const lerpSpeed = 0.008;
 
 const cameras = {
   cam1: {
-    position: new THREE.Vector3(-14, -20, -15),
-    lookAt: new THREE.Vector3(5, 20, 20),
+    position: new THREE.Vector3(-14, -10, -35),
+    lookAt: new THREE.Vector3(0, 1, 0),
   },
   cam2: {
     position: new THREE.Vector3(20, 15, 1),
@@ -29,6 +29,10 @@ const cameras = {
   cam3: {
     position: new THREE.Vector3(15, 16, 20),
     lookAt: new THREE.Vector3(-5, -20, -20),
+  },
+  cam4: {
+    position: new THREE.Vector3(-10, -6, -20),
+    lookAt: new THREE.Vector3(-15, -10, 1),
   },
 };
 
@@ -88,6 +92,16 @@ function init() {
     cube2.layers.set(2);
     scene.add(cube2);
 
+    cube3 = new THREE.Mesh(
+        new THREE.LatheGeometry(),
+        new THREE.MeshBasicMaterial({ color: 0x0000ff, wireframe: true, opacity: 0.5 })
+    );
+    cube3.position.x = -5;
+    cube3.position.y = -6;
+    cube3.position.z = -4;
+    cube3.layers.set(1);
+    scene.add(cube3);
+
     // Create renderer
     renderer = new THREE.WebGLRenderer( { antialias: true } );
     renderer.setPixelRatio( window.devicePixelRatio );
@@ -127,6 +141,9 @@ function init() {
                 break;
             case '3':
                 setCamera('cam3');
+                break;
+            case '4':
+                setCamera('cam4');
                 break;
         }
     });
@@ -176,6 +193,9 @@ function animate() {
 
     cube2.rotation.x += 0.001;
     cube2.rotation.y += 0.003;
+
+    cube3.rotation.x += 0.001;
+    cube3.rotation.y += 0.003;
 
     renderer.render( scene, camera );
 }
