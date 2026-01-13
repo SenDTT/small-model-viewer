@@ -1,6 +1,5 @@
 import * as THREE from 'three';
-import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
-import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 // first create a scene, a camera, and a renderer
 const scene = new THREE.Scene();
@@ -18,6 +17,10 @@ const cube = new THREE.Mesh( geometry, material );
 scene.add( cube );
 // position the camera
 camera.position.z = 5;
+
+const controls = new OrbitControls( camera, labelRenderer.domElement );
+controls.minDistance = 5;
+controls.maxDistance = 100;
 
 // create the animation loop
 function animate() {
