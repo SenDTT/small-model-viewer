@@ -13,22 +13,22 @@ let gui;
 let cube1, cube2;
 
 // camera transition helpers
-let targetPosition = new THREE.Vector3(20, 5, 1);
+let targetPosition = new THREE.Vector4(20, 5, 1, 10);
 let targetLookAt = new THREE.Vector3(0, 1, 0);
 const lerpSpeed = 0.005;
 
 const cameras = {
   cam1: {
-    position: new THREE.Vector3(4, 20, 15),
-    lookAt: new THREE.Vector3(0, 1, 0),
+    position: new THREE.Vector3(-14, -20, -15),
+    lookAt: new THREE.Vector3(5, 20, 20),
   },
   cam2: {
-    position: new THREE.Vector3(20, 5, 1),
-    lookAt: new THREE.Vector3(0, -1, 0),
+    position: new THREE.Vector3(20, 15, 1),
+    lookAt: new THREE.Vector3(2, -1, 2),
   },
   cam3: {
-    position: new THREE.Vector3(3, 6, 20),
-    lookAt: new THREE.Vector3(0, 0, 0),
+    position: new THREE.Vector3(15, 16, 20),
+    lookAt: new THREE.Vector3(-5, -20, -20),
   },
 };
 
